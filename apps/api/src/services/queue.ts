@@ -18,12 +18,17 @@ export function createQueue(env: Env): Queue<ScanJobData> {
     maxRetriesPerRequest: null,
     enableReadyCheck: false,
     lazyConnect: true,
+    retryStrategy: (times) => Math.min(30_000, 1000 + times * 1000),
+    reconnectOnError: () => false,
   });
-  // Surface connection errors but don't crash the process — workers may not
-  // be up yet in dev.
+  // Surface the first error per process so dev knows Redis is missing, but
+  // suppress the firehose of reconnect attempts.
+  let warned = false;
   connection.on('error', (err) => {
+    if (warned) return;
+    warned = true;
     // eslint-disable-next-line no-console
-    console.warn('[queue] redis error:', err.message);
+    console.warn(`[queue] redis unavailable (${err.message}). Queue calls will fail until Redis is up.`);
   });
   queue = new Queue<ScanJobData>('scans', {
     connection,
