@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1.7
+FROM node:20-bookworm AS base
+ENV PNPM_HOME=/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+RUN corepack enable
+# tree-sitter native bindings need build tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 build-essential git ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+
+FROM base AS build
+COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile=false
+RUN pnpm -r --filter './packages/*' build
+RUN pnpm --filter @helix/worker build
+RUN pnpm --filter @helix/worker deploy --prod /out
+
+FROM node:20-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY --from=build /out /app
+USER node
+CMD ["node", "dist/index.js"]

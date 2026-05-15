@@ -1,0 +1,23 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+allowBuilds:
+  esbuild: true
+  msgpackr-extract: true
+  tree-sitter: true
+  tree-sitter-go: true
+  tree-sitter-java: true
+  tree-sitter-javascript: true
+  tree-sitter-python: true
+  tree-sitter-typescript: true
+
+onlyBuiltDependencies:
+  - esbuild
+  - msgpackr-extract
+  - tree-sitter
+  - tree-sitter-go
+  - tree-sitter-java
+  - tree-sitter-javascript
+  - tree-sitter-python
+  - tree-sitter-typescript

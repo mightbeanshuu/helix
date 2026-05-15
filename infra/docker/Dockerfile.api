@@ -1,0 +1,29 @@
+# syntax=docker/dockerfile:1.7
+FROM node:20-bookworm-slim AS base
+ENV PNPM_HOME=/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+RUN corepack enable
+WORKDIR /app
+
+FROM base AS deps
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
+COPY apps/api/package.json apps/api/
+COPY packages/shared/package.json packages/shared/
+COPY packages/storage/package.json packages/storage/
+COPY packages/ai/package.json packages/ai/
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+
+FROM base AS build
+COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile=false
+RUN pnpm --filter @helix/shared --filter @helix/storage --filter @helix/ai build
+RUN pnpm --filter @helix/api build
+RUN pnpm --filter @helix/api deploy --prod /out
+
+FROM node:20-bookworm-slim AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /out /app
+EXPOSE 4000
+USER node
+CMD ["node", "dist/index.js"]

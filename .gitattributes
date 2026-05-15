@@ -1,0 +1,17 @@
+* text=auto eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.wasm binary
+*.zip binary
+*.tar binary
+*.gz binary
+
+# lockfiles - prevent merge churn
+pnpm-lock.yaml -diff

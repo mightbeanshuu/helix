@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "types": ["vite/client"]
+  },
+  "references": [{ "path": "../../packages/shared" }],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts", "**/*.test.tsx"]
+}

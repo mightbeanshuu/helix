@@ -1,0 +1,35 @@
+{
+  "name": "@helix/parser",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsc -b -w",
+    "lint": "eslint src --max-warnings 0",
+    "lint:fix": "eslint src --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@helix/shared": "workspace:*",
+    "tree-sitter": "^0.21.1",
+    "tree-sitter-go": "^0.23.1",
+    "tree-sitter-java": "^0.23.2",
+    "tree-sitter-javascript": "^0.23.0",
+    "tree-sitter-python": "^0.23.2",
+    "tree-sitter-typescript": "^0.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.0.5"
+  }
+}

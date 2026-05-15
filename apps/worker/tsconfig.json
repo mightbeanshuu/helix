@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+  },
+  "references": [
+    { "path": "../../packages/shared" },
+    { "path": "../../packages/parser" },
+    { "path": "../../packages/analyzer" },
+    { "path": "../../packages/ai" },
+    { "path": "../../packages/storage" }
+  ],
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts"]
+}
