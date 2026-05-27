@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { GraphCanvas } from '../components/GraphCanvas.js';
 import { DetailPanel } from '../components/DetailPanel.js';
 import { FileTree } from '../components/FileTree.js';
+import { GraphCanvas } from '../components/GraphCanvas.js';
 import { Logo } from '../components/Logo.js';
 import { ProgressHeader } from '../components/ProgressHeader.js';
 import { useScanEvents } from '../hooks/useScanEvents.js';

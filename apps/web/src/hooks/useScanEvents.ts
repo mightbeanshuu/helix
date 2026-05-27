@@ -1,7 +1,8 @@
-import type { ScanProgress } from '@helix/shared';
 import { useEffect, useState } from 'react';
 
 import { api } from '../lib/api.js';
+
+import type { ScanProgress } from '@helix/shared';
 
 /**
  * Subscribe to the SSE stream for a scan and surface the latest progress

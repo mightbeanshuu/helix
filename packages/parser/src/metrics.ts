@@ -1,6 +1,6 @@
+import type { FileMetrics } from './types.js';
 import type { SupportedLanguage } from '@helix/shared';
 
-import type { FileMetrics } from './types.js';
 
 const SINGLE_LINE_COMMENT: Partial<Record<SupportedLanguage, RegExp>> = {
   typescript: /^\s*\/\//,
@@ -46,7 +46,7 @@ export function computeMetrics(source: string, language: SupportedLanguage): Fil
     const trimmed = line.trim();
     if (trimmed.length === 0) {
       blank++;
-    } else if (commentRe && commentRe.test(line)) {
+    } else if (commentRe?.test(line)) {
       comment++;
     }
   }

@@ -7,9 +7,10 @@ import {
   newClassId,
   newFunctionId,
 } from '@helix/shared';
-import type { StorageAdapter } from '@helix/storage';
 
 import type { ParsedFile } from './parse.js';
+import type { StorageAdapter } from '@helix/storage';
+
 
 export interface BuiltGraph {
   files: FileRecord[];

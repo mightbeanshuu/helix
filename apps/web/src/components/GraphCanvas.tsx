@@ -1,10 +1,11 @@
-import type { CytoscapeGraph } from '@helix/shared';
 import cytoscape, { type Core } from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import { useEffect, useRef } from 'react';
 
 import { helixStylesheet } from '../lib/cytoscape-style.js';
 import { useUI } from '../stores/ui.js';
+
+import type { CytoscapeGraph } from '@helix/shared';
 
 cytoscape.use(fcose);
 
@@ -27,9 +28,10 @@ export function GraphCanvas({ graph }: Props): JSX.Element {
       minZoom: 0.1,
       maxZoom: 4,
     });
-    cy.on('tap', 'node', (evt) => {
-      const id = evt.target.id();
-      const kind = evt.target.data('kind');
+    cy.on('tap', 'node', (evt: cytoscape.EventObject) => {
+      const target = evt.target as cytoscape.NodeSingular;
+      const id = target.id();
+      const kind = target.data('kind') as string;
       if (kind === 'file') setSelectedFileId(id);
     });
     cyRef.current = cy;

@@ -1,6 +1,6 @@
+import type { LanguageBinding } from './types.js';
 import type { SupportedLanguage } from '@helix/shared';
 
-import type { LanguageBinding } from './types.js';
 
 /**
  * Lazy language registry. Grammars are required only when first needed —
@@ -71,7 +71,7 @@ export async function loadLanguage(language: SupportedLanguage): Promise<Languag
     return binding;
   } catch (err) {
     // Grammar failed to load (likely not installed). Caller decides what to do.
-    // eslint-disable-next-line no-console
+     
     console.warn(`[parser] failed to load grammar for ${language}:`, err);
     return null;
   }

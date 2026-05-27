@@ -1,6 +1,7 @@
+import { z } from 'zod';
+
 import type { ScanId, ScanProgress } from '@helix/shared';
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
-import { z } from 'zod';
 
 const Params = z.object({ id: z.string() });
 
@@ -9,6 +10,7 @@ const Params = z.object({ id: z.string() });
  * and receive a fresh JSON object per stage transition. We send a `:keepalive`
  * comment every 25s to keep proxies from killing the connection.
  */
+// eslint-disable-next-line @typescript-eslint/require-await
 export const registerEvents: FastifyPluginAsyncZod = async (app) => {
   app.get('/v1/scans/:id/events', { schema: { params: Params } }, async (req, reply) => {
     const scanId = req.params.id;

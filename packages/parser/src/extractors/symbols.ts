@@ -1,7 +1,7 @@
+import type { ParsedCall, ParsedSymbol } from '../types.js';
 import type { SupportedLanguage } from '@helix/shared';
 import type { SyntaxNode } from 'tree-sitter';
 
-import type { ParsedCall, ParsedSymbol } from '../types.js';
 
 export interface SymbolExtraction {
   symbols: ParsedSymbol[];

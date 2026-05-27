@@ -1,8 +1,8 @@
-import type { CreateScanRequest } from '@helix/shared';
 import { Queue } from 'bullmq';
 import IORedis from 'ioredis';
 
 import type { Env } from '../env.js';
+import type { CreateScanRequest } from '@helix/shared';
 
 export interface ScanJobData {
   scanId: string;
@@ -27,7 +27,7 @@ export function createQueue(env: Env): Queue<ScanJobData> {
   connection.on('error', (err) => {
     if (warned) return;
     warned = true;
-    // eslint-disable-next-line no-console
+     
     console.warn(`[queue] redis unavailable (${err.message}). Queue calls will fail until Redis is up.`);
   });
   queue = new Queue<ScanJobData>('scans', {

@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 
-import { type FileId, type FileRecord, type ScanId, newFileId } from '@helix/shared';
 import { parseFile, type ParseResult } from '@helix/parser';
+import { type FileId, type FileRecord, type ScanId, newFileId } from '@helix/shared';
 
 import type { FileInventory } from './detect.js';
 

@@ -50,7 +50,7 @@ export class StubEmbeddings implements EmbeddingClient {
   // eslint-disable-next-line @typescript-eslint/require-await
   async embed(inputs: string[]): Promise<number[][]> {
     return inputs.map((s) => {
-      const v = new Array(1024).fill(0);
+      const v = new Array<number>(1024).fill(0);
       for (let i = 0; i < s.length; i++) {
         v[i % 1024] = (v[i % 1024] ?? 0) + s.charCodeAt(i) / 1e6;
       }

@@ -35,7 +35,7 @@ export type Env = z.infer<typeof EnvSchema>;
 export function loadEnv(): Env {
   const parsed = EnvSchema.safeParse(process.env);
   if (!parsed.success) {
-    // eslint-disable-next-line no-console
+     
     console.error('Invalid worker env', parsed.error.flatten().fieldErrors);
     process.exit(1);
   }

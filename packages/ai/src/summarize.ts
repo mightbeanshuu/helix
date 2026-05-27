@@ -1,5 +1,6 @@
-import type { HelixAI } from './client.js';
 import { PROMPTS } from './prompts.js';
+
+import type { HelixAI } from './client.js';
 
 export interface ModuleSummaryInput {
   modulePath: string;

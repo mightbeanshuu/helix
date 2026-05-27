@@ -7,8 +7,9 @@ import {
   ScanStatus,
   newScanId,
 } from '@helix/shared';
-import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 import { z } from 'zod';
+
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
 
 const ScanIdParams = z.object({ id: z.string() });
 const FileIdParams = z.object({ id: z.string(), fileId: z.string() });
@@ -16,6 +17,7 @@ const GraphQuery = z.object({
   view: z.enum(['modules', 'files', 'functions', 'classes', 'co-change']).default('files'),
 });
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export const registerScans: FastifyPluginAsyncZod = async (app) => {
   app.post(
     '/v1/scans',

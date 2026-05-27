@@ -1,4 +1,3 @@
-import type { SupportedLanguage } from '@helix/shared';
 import TreeSitter from 'tree-sitter';
 
 import { extractImports } from './extractors/imports.js';
@@ -7,6 +6,7 @@ import { computeMetrics } from './metrics.js';
 import { loadLanguage } from './registry.js';
 
 import type { ParseResult } from './types.js';
+import type { SupportedLanguage } from '@helix/shared';
 
 /**
  * Stateless façade. Tree-sitter parsers are cheap to create but reusing one
@@ -21,7 +21,7 @@ async function getParser(language: SupportedLanguage): Promise<TreeSitter | null
   const binding = await loadLanguage(language);
   if (!binding) return null;
   const parser = new TreeSitter();
-  parser.setLanguage(binding.grammar as never);
+  parser.setLanguage(binding.grammar);
   parserPool.set(language, parser);
   return parser;
 }

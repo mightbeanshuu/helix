@@ -15,9 +15,8 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     headers: { 'content-type': 'application/json', ...(init?.headers ?? {}) },
   });
   if (!res.ok) {
-    const problem: { title?: string; detail?: string; status?: number } = await res
-      .json()
-      .catch(() => ({}));
+    const data = (await res.json().catch(() => ({}))) as unknown;
+    const problem = data as { title?: string; detail?: string; status?: number };
     throw new Error(`${res.status}: ${problem.title ?? problem.detail ?? res.statusText}`);
   }
   if (res.status === 204) return undefined as T;

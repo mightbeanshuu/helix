@@ -1,15 +1,17 @@
 import { deriveModules, resolveImports } from '@helix/analyzer';
 import { type ScanId, type ScanStage, newScanId as _ } from '@helix/shared';
-import type { StorageAdapter } from '@helix/storage';
 
-import type { Env } from '../env.js';
-import type { Logger } from '../logger.js';
+
 import { type ProgressEmitter, progressForStage } from '../progress.js';
 
 import { cloneRepo } from './clone.js';
 import { detectRepo } from './detect.js';
 import { parseFiles } from './parse.js';
 import { buildGraph, persistGraph } from './persist.js';
+
+import type { Env } from '../env.js';
+import type { Logger } from '../logger.js';
+import type { StorageAdapter } from '@helix/storage';
 
 export interface RunArgs {
   scanId: ScanId;

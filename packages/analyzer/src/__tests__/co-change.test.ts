@@ -1,7 +1,8 @@
-import type { FileId } from '@helix/shared';
 import { describe, expect, it } from 'vitest';
 
 import { computeCoChange } from '../co-change.js';
+
+import type { FileId } from '@helix/shared';
 
 describe('computeCoChange', () => {
   it('emits an edge when files change together enough times', () => {

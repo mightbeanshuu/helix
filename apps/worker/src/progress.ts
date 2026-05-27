@@ -1,7 +1,7 @@
+import type { Logger } from './logger.js';
 import type { ScanId, ScanProgress, ScanStage } from '@helix/shared';
 import type Redis from 'ioredis';
 
-import type { Logger } from './logger.js';
 
 export interface ProgressEmitter {
   emit(p: Omit<ScanProgress, 'scanId' | 'at'>): Promise<void>;

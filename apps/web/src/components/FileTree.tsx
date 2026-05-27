@@ -1,8 +1,9 @@
-import type { FileTreeNodeShape } from '@helix/shared';
 import { useState } from 'react';
 
 import { cn } from '../lib/cn.js';
 import { useUI } from '../stores/ui.js';
+
+import type { FileTreeNodeShape } from '@helix/shared';
 
 interface Props {
   node: FileTreeNodeShape | null;

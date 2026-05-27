@@ -1,7 +1,7 @@
 import path from 'node:path';
 
-import type { FileId, FileRecord, ImportRecord } from '@helix/shared';
 import type { ParsedImport } from '@helix/parser';
+import type { FileId, FileRecord, ImportRecord } from '@helix/shared';
 
 const EXTS = ['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.py', '.java', '.go'];
 

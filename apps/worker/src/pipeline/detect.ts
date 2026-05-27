@@ -3,6 +3,8 @@ import path from 'node:path';
 
 import { IGNORED_DIRS, IGNORED_FILE_PATTERNS, LANGUAGE_BY_EXT, type SupportedLanguage } from '@helix/shared';
 
+import type { Dirent } from 'node:fs';
+
 export interface FileInventory {
   /** path relative to repo dir */
   relPath: string;
@@ -29,7 +31,7 @@ export async function detectRepo(dir: string, maxFiles: number): Promise<DetectR
 
   async function walk(current: string): Promise<void> {
     if (count >= maxFiles) return;
-    let entries: import('node:fs').Dirent[];
+    let entries: Dirent[];
     try {
       entries = await fs.readdir(current, { withFileTypes: true });
     } catch {

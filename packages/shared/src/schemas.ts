@@ -15,7 +15,7 @@ export const GitUrlSchema = z
       /^git@[^:]+:.+/.test(v) ||
       /^ssh:\/\//i.test(v) ||
       /^file:\/\//i.test(v) ||
-      /^\//.test(v),
+      v.startsWith('/'),
     { message: 'Must be an http(s), ssh, git@, file:// URL, or absolute path' },
   );
 

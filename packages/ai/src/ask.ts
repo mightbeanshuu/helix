@@ -1,8 +1,9 @@
 import { type AskResponse, UpstreamError } from '@helix/shared';
 import { z } from 'zod';
 
-import type { HelixAI } from './client.js';
 import { PROMPTS } from './prompts.js';
+
+import type { HelixAI } from './client.js';
 
 const RawSchema = z.object({
   answers: z

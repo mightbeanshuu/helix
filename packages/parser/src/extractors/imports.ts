@@ -1,7 +1,7 @@
+import type { ParsedImport } from '../types.js';
 import type { SupportedLanguage } from '@helix/shared';
 import type { SyntaxNode } from 'tree-sitter';
 
-import type { ParsedImport } from '../types.js';
 
 /**
  * Language-aware import extraction. We walk the tree-sitter parse tree and

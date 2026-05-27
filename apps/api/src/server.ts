@@ -3,17 +3,18 @@ import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import sensible from '@fastify/sensible';
 import { HelixError } from '@helix/shared';
-import type { StorageAdapter } from '@helix/storage';
 import Fastify, { type FastifyBaseLogger, type FastifyInstance } from 'fastify';
 import { type ZodTypeProvider, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 
-import type { Env } from './env.js';
 import { createLogger } from './logger.js';
 import { registerEvents } from './routes/events.js';
 import { registerHealth } from './routes/health.js';
 import { registerScans } from './routes/scans.js';
 import { eventBus } from './services/events.js';
 import { createQueue } from './services/queue.js';
+
+import type { Env } from './env.js';
+import type { StorageAdapter } from '@helix/storage';
 
 export interface BuildServerArgs {
   env: Env;

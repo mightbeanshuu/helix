@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import type { CommitRecord } from '@helix/shared';
 import * as git from 'isomorphic-git';
+
+import type { CommitRecord } from '@helix/shared';
 
 export interface FileChurn {
   path: string;

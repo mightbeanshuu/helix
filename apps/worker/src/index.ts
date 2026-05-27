@@ -1,4 +1,3 @@
-import type { ScanId } from '@helix/shared';
 import { createStorage } from '@helix/storage';
 import { Worker } from 'bullmq';
 import IORedis from 'ioredis';
@@ -7,6 +6,8 @@ import { loadEnv } from './env.js';
 import { createLogger } from './logger.js';
 import { runScan } from './pipeline/run.js';
 import { RedisProgressEmitter } from './progress.js';
+
+import type { ScanId } from '@helix/shared';
 
 interface JobData {
   scanId: string;
@@ -62,7 +63,7 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
+   
   console.error('fatal:', err);
   process.exit(1);
 });
