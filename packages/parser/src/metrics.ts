@@ -1,7 +1,6 @@
 import type { FileMetrics } from './types.js';
 import type { SupportedLanguage } from '@helix/shared';
 
-
 const SINGLE_LINE_COMMENT: Partial<Record<SupportedLanguage, RegExp>> = {
   typescript: /^\s*\/\//,
   tsx: /^\s*\/\//,

@@ -4,7 +4,11 @@ import rateLimit from '@fastify/rate-limit';
 import sensible from '@fastify/sensible';
 import { HelixError } from '@helix/shared';
 import Fastify, { type FastifyBaseLogger, type FastifyInstance } from 'fastify';
-import { type ZodTypeProvider, serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
+import {
+  type ZodTypeProvider,
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod';
 
 import { createLogger } from './logger.js';
 import { registerEvents } from './routes/events.js';

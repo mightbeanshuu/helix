@@ -2,7 +2,7 @@
 
 # 🧬 Helix
 
-### *Untangle the DNA of any codebase.*
+### _Untangle the DNA of any codebase._
 
 Helix ingests any Git repository and produces an interactive, navigable map of the
 entire codebase — its architecture, dependencies, hotspots, contributors, and
@@ -27,16 +27,16 @@ embeds every file/function with [Voyage AI](https://voyageai.com), and asks
 [Claude](https://anthropic.com) to summarize each module. The result is an
 interactive atlas:
 
-| | |
-|---|---|
-| 🗺️ **Module + file dependency graph** | Drag, zoom, filter, cluster |
-| 🔥 **Hotspot map** | Churn × complexity overlay |
-| 👥 **Contributor heatmap** | Who owns what |
-| 🏛️ **Auto-inferred architecture** | C4-style: Context → Container → Component |
-| 🔍 **Semantic search** | "Where is auth handled?" |
-| 🧭 **Onboarding tour** | AI-generated guided walkthrough of the top files |
-| 🎯 **Trace a feature** | Surface every file/function involved |
-| ⏳ **Evolution timeline** | Codebase shape over time |
+|                                       |                                                  |
+| ------------------------------------- | ------------------------------------------------ |
+| 🗺️ **Module + file dependency graph** | Drag, zoom, filter, cluster                      |
+| 🔥 **Hotspot map**                    | Churn × complexity overlay                       |
+| 👥 **Contributor heatmap**            | Who owns what                                    |
+| 🏛️ **Auto-inferred architecture**     | C4-style: Context → Container → Component        |
+| 🔍 **Semantic search**                | "Where is auth handled?"                         |
+| 🧭 **Onboarding tour**                | AI-generated guided walkthrough of the top files |
+| 🎯 **Trace a feature**                | Surface every file/function involved             |
+| ⏳ **Evolution timeline**             | Codebase shape over time                         |
 
 See [PROMPT.md](./PROMPT.md) for the full product spec / master build prompt.
 
@@ -118,22 +118,22 @@ helix/
 
 ## 🧰 Tech stack
 
-| Layer       | Choice                                                    |
-| ----------- | --------------------------------------------------------- |
-| Language    | **TypeScript 5.6 strict** end-to-end                      |
-| Backend     | **Fastify 5** + **Zod** + **Pino** + **BullMQ**           |
-| Parser      | **web-tree-sitter** (TS/JS, Python, Java, Go, Rust, C++)  |
-| Git         | **isomorphic-git** (no native deps, works in workers)     |
-| Graph DB    | **Neo4j 5** (pluggable: in-memory fallback for dev)       |
-| Vector DB   | **Qdrant**                                                |
-| Queue       | **Redis** + **BullMQ**                                    |
-| LLM         | **Claude** (`claude-opus-4-7` + `claude-haiku-4-5`)       |
-| Embeddings  | **Voyage AI** `voyage-code-3`                             |
-| Frontend    | **React 18** + **Vite** + **Tailwind** + **Radix UI**     |
-| Graphs      | **Cytoscape.js** (2D), **react-three-fiber** (3D stretch) |
-| State       | **TanStack Query** + **Zustand**                          |
-| Tests       | **Vitest** (unit) + **Playwright** (E2E)                  |
-| CI          | **GitHub Actions**                                        |
+| Layer      | Choice                                                    |
+| ---------- | --------------------------------------------------------- |
+| Language   | **TypeScript 5.6 strict** end-to-end                      |
+| Backend    | **Fastify 5** + **Zod** + **Pino** + **BullMQ**           |
+| Parser     | **web-tree-sitter** (TS/JS, Python, Java, Go, Rust, C++)  |
+| Git        | **isomorphic-git** (no native deps, works in workers)     |
+| Graph DB   | **Neo4j 5** (pluggable: in-memory fallback for dev)       |
+| Vector DB  | **Qdrant**                                                |
+| Queue      | **Redis** + **BullMQ**                                    |
+| LLM        | **Claude** (`claude-opus-4-7` + `claude-haiku-4-5`)       |
+| Embeddings | **Voyage AI** `voyage-code-3`                             |
+| Frontend   | **React 18** + **Vite** + **Tailwind** + **Radix UI**     |
+| Graphs     | **Cytoscape.js** (2D), **react-three-fiber** (3D stretch) |
+| State      | **TanStack Query** + **Zustand**                          |
+| Tests      | **Vitest** (unit) + **Playwright** (E2E)                  |
+| CI         | **GitHub Actions**                                        |
 
 ---
 

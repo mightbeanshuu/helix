@@ -94,15 +94,7 @@ export const GraphEdge = z.object({
     id: z.string(),
     source: z.string(),
     target: z.string(),
-    kind: z.enum([
-      'imports',
-      'calls',
-      'extends',
-      'implements',
-      'contains',
-      'co-changed',
-      'covers',
-    ]),
+    kind: z.enum(['imports', 'calls', 'extends', 'implements', 'contains', 'co-changed', 'covers']),
     weight: z.number().nonnegative().optional(),
   }),
 });

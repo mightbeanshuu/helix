@@ -2,7 +2,6 @@ import { cn } from '../lib/cn.js';
 
 import type { ScanProgress, ScanStatus } from '@helix/shared';
 
-
 interface Props {
   scan: ScanStatus | undefined;
   progress: ScanProgress | null;

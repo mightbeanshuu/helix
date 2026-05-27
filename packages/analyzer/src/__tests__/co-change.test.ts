@@ -19,7 +19,10 @@ describe('computeCoChange', () => {
   });
 
   it('drops below-threshold pairs', () => {
-    const map = new Map<string, FileId>([['a.ts', 'fil_a' as FileId], ['b.ts', 'fil_b' as FileId]]);
+    const map = new Map<string, FileId>([
+      ['a.ts', 'fil_a' as FileId],
+      ['b.ts', 'fil_b' as FileId],
+    ]);
     const edges = computeCoChange([{ files: ['a.ts', 'b.ts'] }], map, { minWeight: 3 });
     expect(edges).toHaveLength(0);
   });

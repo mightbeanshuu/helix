@@ -18,7 +18,10 @@ export interface FileChurn {
 export async function computeChurn(
   repoDir: string,
   opts: { since?: Date; limit?: number } = {},
-): Promise<{ churn: Map<string, FileChurn>; commits: Omit<CommitRecord, 'id' | 'scanId' | 'authorId'>[] }> {
+): Promise<{
+  churn: Map<string, FileChurn>;
+  commits: Omit<CommitRecord, 'id' | 'scanId' | 'authorId'>[];
+}> {
   const churn = new Map<string, FileChurn>();
   const commits: Omit<CommitRecord, 'id' | 'scanId' | 'authorId'>[] = [];
 

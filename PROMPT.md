@@ -8,14 +8,14 @@
 
 ## 0. Identity
 
-| Field | Value |
-| --- | --- |
-| **Name** | Helix |
-| **Tagline** | *Untangle the DNA of any codebase.* |
+| Field         | Value                                                                                                                             |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Name**      | Helix                                                                                                                             |
+| **Tagline**   | _Untangle the DNA of any codebase._                                                                                               |
 | **One-liner** | Scan any Git repo and produce an interactive map of its architecture, dependencies, hotspots, contributors, and AI-narrated tour. |
-| **Repo** | github.com/mightbeanshuu/helix |
-| **License** | MIT |
-| **Status** | Early build; production-grade scaffolding, iterative feature delivery. |
+| **Repo**      | github.com/mightbeanshuu/helix                                                                                                    |
+| **License**   | MIT                                                                                                                               |
+| **Status**    | Early build; production-grade scaffolding, iterative feature delivery.                                                            |
 
 ---
 
@@ -23,7 +23,7 @@
 
 **Problem.** Reading a large codebase cold takes weeks. Most "code search" tools
 answer "where is the string `foo`?" — they don't answer "how does this system
-*work*?"
+_work_?"
 
 **Outcome.** A new engineer pastes a Git URL into Helix and within minutes has
 (a) a navigable architecture graph, (b) AI-generated summaries of every module,
@@ -38,6 +38,7 @@ the top-level architecture in their own words after 15 minutes with Helix.
 ## 2. Capabilities (mapped to phases)
 
 ### Phase 1 — Ingest & parse (MVP)
+
 - Accept a public Git URL or local path.
 - Clone shallow then deepen on demand.
 - Detect languages, frameworks, build systems, package managers.
@@ -48,6 +49,7 @@ the top-level architecture in their own words after 15 minutes with Helix.
 - Persist as a property graph (nodes + edges) and per-file embeddings.
 
 ### Phase 2 — History & metrics
+
 - Per-file: LOC, cyclomatic complexity, fan-in/fan-out, age, last-touched.
 - Per-author: ownership map, expertise areas, contribution graph.
 - Churn: commits-per-file over windowed time.
@@ -55,6 +57,7 @@ the top-level architecture in their own words after 15 minutes with Helix.
 - Test coverage overlay if `lcov.info` / `coverage.xml` is present.
 
 ### Phase 3 — Visualization
+
 - **Module dependency graph** — packages/modules and their imports.
 - **File-level graph** — file imports + co-change edges.
 - **Function call graph** — within-module + cross-module.
@@ -66,6 +69,7 @@ the top-level architecture in their own words after 15 minutes with Helix.
 - **Timeline view** — animated codebase evolution.
 
 ### Phase 4 — AI layer (Claude)
+
 - Per-module 2-sentence summaries (Haiku for cost, Opus for top-level).
 - Missing docstring generation.
 - **Semantic search** — natural language → ranked files with rationale.
@@ -73,13 +77,15 @@ the top-level architecture in their own words after 15 minutes with Helix.
 - **Onboarding tour** — generated top-10 files a newcomer should read, in order.
 
 ### Phase 5 — UX polish
+
 - Single-page app: left tree, center canvas, right detail panel.
-- Right-click on a node: *Explain* / *Find similar* / *Trace callers* / *Tour from here*.
+- Right-click on a node: _Explain_ / _Find similar_ / _Trace callers_ / _Tour from here_.
 - ⌘K command palette: jump to file/function/symbol.
 - Shareable permalinks per view.
 - Keyboard-only navigation parity.
 
 ### Phase 6 — Production
+
 - Auth, multi-tenant scan history, share links, public showcase.
 - Rate limits, budget caps per scan.
 - Observability: OpenTelemetry traces, Prometheus metrics, Grafana dashboards.
@@ -133,28 +139,28 @@ Enqueue scan
 
 ## 4. Tech stack (opinionated)
 
-| Layer       | Choice                                                    |
-| ----------- | --------------------------------------------------------- |
-| Language    | **TypeScript 5.6 strict** end-to-end                      |
-| Runtime     | **Node.js 20+**                                           |
-| Backend     | **Fastify 5** + **Zod** + **Pino**                        |
-| Queue       | **BullMQ** on **Redis 7**                                 |
-| Parser      | **web-tree-sitter** (multi-language, WASM)                |
-| Git         | **isomorphic-git** (no native deps, worker-safe)          |
-| Graph DB    | **Neo4j 5** (pluggable in-memory fallback)                |
-| Vector DB   | **Qdrant** (gRPC + REST)                                  |
-| Metadata DB | **Postgres 16** (via Drizzle ORM)                         |
+| Layer       | Choice                                                                       |
+| ----------- | ---------------------------------------------------------------------------- |
+| Language    | **TypeScript 5.6 strict** end-to-end                                         |
+| Runtime     | **Node.js 20+**                                                              |
+| Backend     | **Fastify 5** + **Zod** + **Pino**                                           |
+| Queue       | **BullMQ** on **Redis 7**                                                    |
+| Parser      | **web-tree-sitter** (multi-language, WASM)                                   |
+| Git         | **isomorphic-git** (no native deps, worker-safe)                             |
+| Graph DB    | **Neo4j 5** (pluggable in-memory fallback)                                   |
+| Vector DB   | **Qdrant** (gRPC + REST)                                                     |
+| Metadata DB | **Postgres 16** (via Drizzle ORM)                                            |
 | LLM         | **Claude** — `claude-opus-4-7` (depth), `claude-haiku-4-5-20251001` (volume) |
-| Embeddings  | **Voyage AI** `voyage-code-3`                             |
-| Frontend    | **React 18** + **Vite 5** + **TypeScript**                |
-| Styling     | **Tailwind 3.4** + **Radix UI** (shadcn pattern)          |
-| Graph viz   | **Cytoscape.js 3** (2D), **react-three-fiber** (stretch)  |
-| State       | **TanStack Query 5** + **Zustand 4**                      |
-| Routing     | **TanStack Router**                                       |
-| Tests       | **Vitest** (unit) + **Playwright** (E2E)                  |
-| Lint/format | **ESLint 9** flat config + **Prettier 3**                 |
-| CI          | **GitHub Actions**                                        |
-| Observ.     | **OpenTelemetry** + **Prometheus** + **Grafana**          |
+| Embeddings  | **Voyage AI** `voyage-code-3`                                                |
+| Frontend    | **React 18** + **Vite 5** + **TypeScript**                                   |
+| Styling     | **Tailwind 3.4** + **Radix UI** (shadcn pattern)                             |
+| Graph viz   | **Cytoscape.js 3** (2D), **react-three-fiber** (stretch)                     |
+| State       | **TanStack Query 5** + **Zustand 4**                                         |
+| Routing     | **TanStack Router**                                                          |
+| Tests       | **Vitest** (unit) + **Playwright** (E2E)                                     |
+| Lint/format | **ESLint 9** flat config + **Prettier 3**                                    |
+| CI          | **GitHub Actions**                                                           |
+| Observ.     | **OpenTelemetry** + **Prometheus** + **Grafana**                             |
 
 ### Hard rules
 
@@ -333,7 +339,7 @@ helix/
 ## 9. Non-goals (explicit)
 
 - Code editing / refactoring. Helix is read-only.
-- Replacing GitHub. We *complement* it.
+- Replacing GitHub. We _complement_ it.
 - Real-time collaboration. (Not in v1.)
 - Static analysis depth that competes with SonarQube. Use existing tools and ingest their output.
 - Mobile app. Desktop web only in v1.

@@ -11,12 +11,21 @@ import {
 import type { ParsedFile } from './parse.js';
 import type { StorageAdapter } from '@helix/storage';
 
-
 export interface BuiltGraph {
   files: FileRecord[];
   classes: ClassRecord[];
   functions: FunctionRecord[];
-  imports: { fromFileId: string; fromPath: string; parsed: { specifier: string; names: string[]; isNamespace: boolean; isRelative: boolean; line: number }[] }[];
+  imports: {
+    fromFileId: string;
+    fromPath: string;
+    parsed: {
+      specifier: string;
+      names: string[];
+      isNamespace: boolean;
+      isRelative: boolean;
+      line: number;
+    }[];
+  }[];
 }
 
 export function buildGraph(parsed: ParsedFile[]): BuiltGraph {

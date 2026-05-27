@@ -37,9 +37,7 @@ function TreeNode({ node, depth }: { node: FileTreeNodeShape; depth: number }): 
         )}
         style={{ paddingLeft: depth * 12 + 4 }}
       >
-        <span className="w-3 text-helix-fg-muted">
-          {isDir ? (open ? '▾' : '▸') : ' '}
-        </span>
+        <span className="w-3 text-helix-fg-muted">{isDir ? (open ? '▾' : '▸') : ' '}</span>
         <span className={cn(isDir ? 'text-helix-fg' : 'text-helix-fg-muted')}>{node.name}</span>
         {!isDir && node.loc !== undefined && (
           <span className="ml-auto text-[10px] text-helix-fg-muted">{node.loc}</span>

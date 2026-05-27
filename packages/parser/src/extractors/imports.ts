@@ -2,7 +2,6 @@ import type { ParsedImport } from '../types.js';
 import type { SupportedLanguage } from '@helix/shared';
 import type { SyntaxNode } from 'tree-sitter';
 
-
 /**
  * Language-aware import extraction. We walk the tree-sitter parse tree and
  * collect raw specifiers + the symbol names they bind. This is good enough

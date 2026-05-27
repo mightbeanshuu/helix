@@ -15,9 +15,7 @@ export function computeCoChange(
   const pairs = new Map<string, number>();
 
   for (const c of commits) {
-    const ids = c.files
-      .map((p) => pathToFileId.get(p))
-      .filter((x): x is FileId => x !== undefined);
+    const ids = c.files.map((p) => pathToFileId.get(p)).filter((x): x is FileId => x !== undefined);
     if (ids.length < 2 || ids.length > 50) continue; // skip mega-commits
     ids.sort();
     for (let i = 0; i < ids.length; i++) {

@@ -17,9 +17,7 @@ export async function summarizeModule(
   input: ModuleSummaryInput,
   opts: { model?: string } = {},
 ): Promise<string> {
-  const context = input.fileSamples
-    .map((s) => `// FILE: ${s.path}\n${s.head}`)
-    .join('\n\n---\n\n');
+  const context = input.fileSamples.map((s) => `// FILE: ${s.path}\n${s.head}`).join('\n\n---\n\n');
 
   const result = await ai.complete({
     ...(opts.model && { model: opts.model }),

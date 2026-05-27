@@ -28,7 +28,12 @@ export default defineConfig({
         manualChunks: {
           react: ['react', 'react-dom', 'react-router-dom'],
           query: ['@tanstack/react-query'],
-          cytoscape: ['cytoscape', 'react-cytoscapejs', 'cytoscape-fcose', 'cytoscape-cose-bilkent'],
+          cytoscape: [
+            'cytoscape',
+            'react-cytoscapejs',
+            'cytoscape-fcose',
+            'cytoscape-cose-bilkent',
+          ],
         },
       },
     },

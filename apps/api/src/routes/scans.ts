@@ -66,10 +66,8 @@ export const registerScans: FastifyPluginAsyncZod = async (app) => {
     },
   );
 
-  app.get(
-    '/v1/scans/:id/tree',
-    { schema: { params: ScanIdParams } },
-    async (req) => app.storage.getFileTree(req.params.id as ScanId),
+  app.get('/v1/scans/:id/tree', { schema: { params: ScanIdParams } }, async (req) =>
+    app.storage.getFileTree(req.params.id as ScanId),
   );
 
   app.get(
@@ -78,25 +76,17 @@ export const registerScans: FastifyPluginAsyncZod = async (app) => {
     async (req) => app.storage.getGraph(req.params.id as ScanId, req.query.view),
   );
 
-  app.get(
-    '/v1/scans/:id/file/:fileId',
-    { schema: { params: FileIdParams } },
-    async (req) => {
-      const detail = await app.storage.getFileDetail(
-        req.params.id as ScanId,
-        req.params.fileId as FileId,
-      );
-      if (!detail) throw new NotFoundError('File', req.params.fileId);
-      return detail;
-    },
-  );
+  app.get('/v1/scans/:id/file/:fileId', { schema: { params: FileIdParams } }, async (req) => {
+    const detail = await app.storage.getFileDetail(
+      req.params.id as ScanId,
+      req.params.fileId as FileId,
+    );
+    if (!detail) throw new NotFoundError('File', req.params.fileId);
+    return detail;
+  });
 
-  app.delete(
-    '/v1/scans/:id',
-    { schema: { params: ScanIdParams } },
-    async (req, reply) => {
-      await app.storage.deleteScan(req.params.id as ScanId);
-      void reply.code(204).send();
-    },
-  );
+  app.delete('/v1/scans/:id', { schema: { params: ScanIdParams } }, async (req, reply) => {
+    await app.storage.deleteScan(req.params.id as ScanId);
+    void reply.code(204).send();
+  });
 };

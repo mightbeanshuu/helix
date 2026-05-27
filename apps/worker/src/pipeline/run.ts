@@ -1,7 +1,6 @@
 import { deriveModules, resolveImports } from '@helix/analyzer';
 import { type ScanId, type ScanStage, newScanId as _ } from '@helix/shared';
 
-
 import { type ProgressEmitter, progressForStage } from '../progress.js';
 
 import { cloneRepo } from './clone.js';

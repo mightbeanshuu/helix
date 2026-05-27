@@ -31,8 +31,7 @@ export const api = {
   getTree: (id: string) => request<FileTreeNodeShape>(`/v1/scans/${id}/tree`),
   getGraph: (id: string, view: 'modules' | 'files' | 'functions' | 'classes' = 'files') =>
     request<CytoscapeGraph>(`/v1/scans/${id}/graph?view=${view}`),
-  getFile: (id: string, fileId: string) =>
-    request<FileDetail>(`/v1/scans/${id}/file/${fileId}`),
+  getFile: (id: string, fileId: string) => request<FileDetail>(`/v1/scans/${id}/file/${fileId}`),
   deleteScan: (id: string) => request<void>(`/v1/scans/${id}`, { method: 'DELETE' }),
   events: (id: string): EventSource => new EventSource(`${base}/v1/scans/${id}/events`),
 };

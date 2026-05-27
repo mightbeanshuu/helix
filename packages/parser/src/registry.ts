@@ -1,7 +1,6 @@
 import type { LanguageBinding } from './types.js';
 import type { SupportedLanguage } from '@helix/shared';
 
-
 /**
  * Lazy language registry. Grammars are required only when first needed —
  * this keeps cold start fast even though we ship many language bindings.
@@ -71,7 +70,7 @@ export async function loadLanguage(language: SupportedLanguage): Promise<Languag
     return binding;
   } catch (err) {
     // Grammar failed to load (likely not installed). Caller decides what to do.
-     
+
     console.warn(`[parser] failed to load grammar for ${language}:`, err);
     return null;
   }

@@ -25,9 +25,7 @@ export interface TourFile {
 }
 
 export async function generateTour(ai: HelixAI, files: TourFile[]): Promise<Tour> {
-  const ranked = [...files]
-    .sort((a, b) => (b.importance ?? 0) - (a.importance ?? 0))
-    .slice(0, 40);
+  const ranked = [...files].sort((a, b) => (b.importance ?? 0) - (a.importance ?? 0)).slice(0, 40);
   const context = ranked
     .map(
       (f) =>

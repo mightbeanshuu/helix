@@ -26,10 +26,7 @@ async function getParser(language: SupportedLanguage): Promise<TreeSitter | null
   return parser;
 }
 
-export async function parseFile(
-  source: string,
-  language: SupportedLanguage,
-): Promise<ParseResult> {
+export async function parseFile(source: string, language: SupportedLanguage): Promise<ParseResult> {
   const result: ParseResult = {
     language,
     metrics: computeMetrics(source, language),

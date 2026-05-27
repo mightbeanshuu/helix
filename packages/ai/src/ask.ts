@@ -30,10 +30,7 @@ export async function askCodebase(
   candidates: AskCandidateFile[],
 ): Promise<AskResponse> {
   const context = candidates
-    .map(
-      (c) =>
-        `<file id="${c.fileId}" path="${c.path}">${c.summary ?? c.head ?? ''}</file>`,
-    )
+    .map((c) => `<file id="${c.fileId}" path="${c.path}">${c.summary ?? c.head ?? ''}</file>`)
     .join('\n');
 
   const result = await ai.complete({

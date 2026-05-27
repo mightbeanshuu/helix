@@ -1,7 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-import { IGNORED_DIRS, IGNORED_FILE_PATTERNS, LANGUAGE_BY_EXT, type SupportedLanguage } from '@helix/shared';
+import {
+  IGNORED_DIRS,
+  IGNORED_FILE_PATTERNS,
+  LANGUAGE_BY_EXT,
+  type SupportedLanguage,
+} from '@helix/shared';
 
 import type { Dirent } from 'node:fs';
 

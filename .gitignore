@@ -25,6 +25,7 @@ coverage/
 .vitest-cache/
 playwright-report/
 test-results/
+eslint-output.json
 
 # logs
 *.log
@@ -64,9 +65,9 @@ Desktop.ini
 
 # helix runtime
 /.helix/
-storage/
-scans/
-clones/
+/storage/
+/scans/
+/clones/
 *.sqlite
 *.sqlite-journal
 *.db

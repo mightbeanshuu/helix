@@ -7,7 +7,7 @@
 
 Neo4j is the right primary store for Helix — Cypher is built for the queries
 we'll need ("everything reachable from main", "files in a co-change cluster",
-PageRank for hotspot weighting). But requiring Docker to *try* the project
+PageRank for hotspot weighting). But requiring Docker to _try_ the project
 is hostile to first-time users.
 
 ## Decision
@@ -30,7 +30,7 @@ The factory is the single chokepoint that wires the right one based on env.
 
 ## Consequences
 
-- The memory adapter is *not* persistence. Scans evaporate on process restart.
+- The memory adapter is _not_ persistence. Scans evaporate on process restart.
   This is fine for dev/demo and called out clearly in the README.
 - Some Cypher-specific projections (full-text search, GDS algorithms) won't
   have a memory equivalent. The API endpoints that depend on them will

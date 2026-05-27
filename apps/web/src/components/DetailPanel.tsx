@@ -70,7 +70,9 @@ export function DetailPanel({ scanId }: Props): JSX.Element {
             {f.classes.map((c) => (
               <li key={c.id}>
                 <span className="text-helix-accent-glow">{c.name}</span>{' '}
-                <span className="text-helix-fg-muted">L{c.lineStart}-{c.lineEnd}</span>
+                <span className="text-helix-fg-muted">
+                  L{c.lineStart}-{c.lineEnd}
+                </span>
               </li>
             ))}
           </ul>

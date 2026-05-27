@@ -36,9 +36,7 @@ export class VoyageEmbeddings implements EmbeddingClient {
       const json = (await response.json()) as {
         data: { embedding: number[]; index: number }[];
       };
-      return json.data
-        .sort((a, b) => a.index - b.index)
-        .map((d) => d.embedding);
+      return json.data.sort((a, b) => a.index - b.index).map((d) => d.embedding);
     } catch (err) {
       throw new UpstreamError('voyage', err);
     }

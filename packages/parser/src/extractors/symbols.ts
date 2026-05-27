@@ -2,7 +2,6 @@ import type { ParsedCall, ParsedSymbol } from '../types.js';
 import type { SupportedLanguage } from '@helix/shared';
 import type { SyntaxNode } from 'tree-sitter';
 
-
 export interface SymbolExtraction {
   symbols: ParsedSymbol[];
   calls: ParsedCall[];
@@ -76,7 +75,8 @@ export function extractSymbols(root: SyntaxNode, language: SupportedLanguage): S
     ) {
       const name = getName(node);
       const fqn = parentClass ? `${parentClass}.${name}` : name;
-      const extendsNode = node.childForFieldName('superclass') ?? node.descendantsOfType('superclasses')[0];
+      const extendsNode =
+        node.childForFieldName('superclass') ?? node.descendantsOfType('superclasses')[0];
       const implementsNode = node.descendantsOfType('implements_clause')[0];
       symbols.push({
         kind: t === 'interface_declaration' ? 'interface' : 'class',
